@@ -1,0 +1,15 @@
+{
+  "name": "caa-sdk-communicator",
+  "version": "1.0.0",
+  "description": "Cascade API clientside api used to manage  communication between client and user device.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Minier - Cascade Fintech",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
