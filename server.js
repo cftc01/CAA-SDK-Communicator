@@ -7,4 +7,5 @@ const api = require('./routes/api')
 
 app.use('/api', api)
 
-app.listen(3080, () => console.log("CAA-SDK Communicator Running on port 3080"))
+// Expose it on the localhost ip so it can be access from other devices on the network
+app.listen(3080, '0.0.0.0', () => console.log("CAA-SDK Communicator Running on port 3080"))

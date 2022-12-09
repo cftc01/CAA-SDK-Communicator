@@ -9,7 +9,11 @@ router.get('/getInitializationVector', async (req, res) => {
         //
         // - Make call to cascade api to get IV VID
         // - Respond with IV VID
-        // - 
+        // -
+
+        // Seems to be required as it isn't automatically setting it
+        res.append('Content-Type', 'application/json')
+
         res.json({
         "offset": "xxxxxxxx",
         "offsetID": "xxxxxxxx"
