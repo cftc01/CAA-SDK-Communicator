@@ -1,3 +1,9 @@
+const obtainAccessToken = require('./utilities')
+
+let token = {}
+
+token = obtainAccessToken()
+
 const express = require('express')
 const app = express()
 
