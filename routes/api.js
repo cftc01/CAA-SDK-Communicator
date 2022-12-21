@@ -4,7 +4,7 @@ const axios = require('axios')
 const express = require('express')
 const router = express.Router()
 
-router.get('/getInitializationVector', async (req, res) => {
+router.post('/getInitializationVector', async (req, res) => {
     console.log("IV Request starting")
     try {
         const cardID = req.body.cardID
