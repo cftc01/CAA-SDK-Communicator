@@ -10,7 +10,7 @@ router.post('/getInitializationVector', async (req, res) => {
         const cardID = req.body.cardID
 
         const config = {
-            headers: { 
+            headers: {
                 'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
@@ -50,14 +50,14 @@ router.post('/getPlaidLinkToken', async (req, res) => {
         }
 
         const config = {
-            headers: { 
+            headers: {
                 'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }
         };
         console.log("Sending Request")
         axios.post(
-          `${process.env.BACKEND_API}/api/cardholders/${cardHolderID}/plaidLinkToken`, 
+          `${process.env.BACKEND_API}/api/cardholders/${cardHolderID}/plaidLinkToken`,
           body,
           config
         ).then((response) => {
@@ -68,7 +68,6 @@ router.post('/getPlaidLinkToken', async (req, res) => {
         .catch((e) => {
             res.status(500).json({ Error: e })
         })
-        
     } catch (err) {
         res.status(500).json({ Message: err.message })
     }
@@ -79,22 +78,22 @@ router.post('/registerPlaidPublicToken', async (req, res) => {
     try {
         const cardHolderID = req.body.cardHolderID
         const publicToken = req.body.plaidPublicToken
-        const registrationID = req.body.plaidRegistrationId
+        const linkToken = req.body.plaidLinkToken
 
         const body = {
             plaidPublicToken: publicToken,
-            plaidRegistrationId: registrationID
+            plaidLinkToken: linkToken
         };
 
         const config = {
-            headers: { 
+            headers: {
                 'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }
         };
         console.log("Sending Request")
         axios.post(
-          `${process.env.BACKEND_API}/api/cardholders/${cardHolderID}/registerPlaidPublicToken`, 
+          `${process.env.BACKEND_API}/api/cardholders/${cardHolderID}/registerPlaidPublicToken`,
           body,
           config
         ).then((response) => {
@@ -117,9 +116,9 @@ router.post('/cardholderDetails', async (req, res) => {
         const cardHolderID = req.body.cardHolderID
 
         const config = {
-            headers: { 
+            headers: {
                 'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             }
         };
         console.log("Sending Request")
